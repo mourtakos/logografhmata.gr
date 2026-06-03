@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ΛογοΓραφήματα - Κέντρο Ειδικών Θεραπειών για παιδιά στη Ρέντης. Λογοθεραπεία, Εργοθεραπεία, Ψυχοθεραπεία, Θεατρική Αγωγή και άλλες θεραπείες με επαγγελματική ομάδα.">
+    <meta name="keywords" content="λογοθεραπεία, εργοθεραπεία, ψυχοθεραπεία, παιδική θεραπεία, Ρέντης, Νίκαια, Πειραιάς">
+    <meta name="author" content="ΛογοΓραφήματα">
+    <title>ΛογοΓραφήματα - Κέντρο Ειδικών Θεραπειών για Παιδιά</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #F5F3F0;
+            --white: #FFFFFF;
+            --sage: #A8C5A0;
+            --teal: #B8D4D0;
+            --beige: #E8DCC8;
+            --charcoal: #2C2C2C;
+            --rose: #C8A09E;
+            --accent: #96B8A0;
+            --light-gray: #F8F6F4;
+            --text: #3D3D3D;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--charcoal);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: var(--charcoal);
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--sage);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--sage);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .btn-cta {
+            background: var(--sage);
+            color: var(--white);
+            padding: 0.75rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(168, 197, 160, 0.25);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--charcoal);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--light-gray) 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--sage);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(168, 197, 160, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--sage);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid var(--sage);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--sage);
+            color: var(--white);
+        }
+
+        /* Trust Section */
+        .trust {
+            background: var(--white);
+            padding: 5rem 2rem;
+        }
+
+        .trust-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text);
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .trust-card {
+            background: var(--light-gray);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(168, 197, 160, 0.1);
+        }
+
+        .trust-card:hover {
+            transform: translateY(-8px);
+            background: var(--cream);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .trust-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .trust-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .trust-card p {
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--light-gray);
+            padding: 5rem 2rem;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--sage);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--accent);
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card a {
+            color: var(--sage);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .service-card a:hover {
+            color: var(--accent);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+            padding: 5rem 2rem;
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            color: var(--text);
+            font-size: 1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--beige) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        /* When to Seek Help Section */
+        .signs {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--light-gray) 100%);
+            padding: 5rem 2rem;
+        }
+
+        .signs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .signs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .sign-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            border-top: 4px solid var(--sage);
+        }
+
+        .sign-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+
+        .sign-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sign-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .sign-card li:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--sage);
+            font-weight: bold;
+        }
+
+        /* Process Section */
+        .process {
+            background: var(--white);
+            padding: 5rem 2rem;
+        }
+
+        .process-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0;
+            position: relative;
+        }
+
+        .process-step {
+            background: var(--light-gray);
+            padding: 2.5rem;
+            text-align: center;
+            border-radius: 12px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            background: var(--beige);
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--sage);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+        }
+
+        .process-step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+
+        .process-step p {
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--light-gray) 100%);
+            padding: 5rem 2rem;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial p {
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            color: var(--sage);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: var(--white);
+            padding: 5rem 2rem;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--cream);
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-question {
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            cursor: pointer;
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--sage);
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--sage) 0%, var(--accent) 100%);
+            padding: 5rem 2rem;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-title {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .contact-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item h3 {
+            color: var(--white);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .contact-item p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--white);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: var(--white);
+            color: var(--sage);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--sage);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .services-grid,
+            .trust-grid,
+            .signs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem;
+            }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .trust-card,
+            .service-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Antenna left -->
+                    <path d="M 35 15 Q 30 5 25 0" stroke="#A8C5A0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                    <!-- Antenna right -->
+                    <path d="M 65 15 Q 70 5 75 0" stroke="#A8C5A0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                    <!-- Head leaf -->
+                    <ellipse cx="50" cy="20" rx="15" ry="18" fill="#A8C5A0"/>
+                    <!-- Left wing -->
+                    <ellipse cx="30" cy="45" rx="18" ry="25" fill="#D4CCC8"/>
+                    <!-- Right wing -->
+                    <ellipse cx="70" cy="45" rx="18" ry="25" fill="#D4CCC8"/>
+                    <!-- Petals 1 -->
+                    <ellipse cx="45" cy="55" rx="12" ry="16" fill="#E8E4B0"/>
+                    <!-- Petals 2 -->
+                    <ellipse cx="55" cy="55" rx="12" ry="16" fill="#E8E4B0"/>
+                    <!-- Petals 3 -->
+                    <ellipse cx="50" cy="68" rx="14" ry="12" fill="#E8E4B0"/>
+                    <!-- Center -->
+                    <circle cx="50" cy="52" r="8" fill="#A8C5A0" opacity="0.3"/>
+                </svg>
+                <span class="logo-text">ΛογοΓραφήματα</span>
+            </a>
+            <nav>
+                <a href="#services">Υπηρεσίες</a>
+                <a href="#about">Σχετικά</a>
+                <a href="#process">Διαδικασία</a>
+                <a href="#contact">Επικοινωνία</a>
+            </nav>
+            <button class="btn-cta" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Κλείστε Ραντεβού</button>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Θεραπείες που αλλάζουν ζωές, με αγάπη και προσοχή</h1>
+            <p>Το κέντρο ΛογοΓραφήματα είναι εδώ να υποστηρίξει το παιδί σας και την οικογένειά του με επαγγελματισμό και ζεστασιά.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Κλείστε την Πρώτη Αξιολόγηση</button>
+                <button class="btn-secondary" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">Μάθε Περισσότερα</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust">
+        <div class="trust-container">
+            <h2 class="section-title">Γιατί να μας επιλέξετε</h2>
+            <p class="section-subtitle">Εμπειρία, επαγγελματισμός και αγάπη για κάθε παιδί</p>
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <div class="trust-icon">🎯</div>
+                    <h3>Εξατομικευμένη Προσέγγιση</h3>
+                    <p>Κάθε παιδί είναι μοναδικό. Σχεδιάζουμε θεραπείες που ταιριάζουν ακριβώς στις ανάγκες του παιδιού σας.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">👨‍⚕️</div>
+                    <h3>Επαγγελματική Ομάδα</h3>
+                    <p>Λογοπεδικοί, εργοθεραπευτές, ψυχολόγοι και εκπαιδευτικοί με εξειδίκευση και καρδιά.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">👨‍👩‍👧</div>
+                    <h3>Συμμετοχή της Οικογένειας</h3>
+                    <p>Οι γονείς είναι μέρος της ομάδας. Μοιραζόμαστε στοιχεία και συμβουλές για το σπίτι.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="services-container">
+            <h2 class="section-title">Οι Υπηρεσίες Μας</h2>
+            <p class="section-subtitle">Ολοκληρωμένη στήριξη για όλες τις ανάγκες του παιδιού σας</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>🗣️ Λογοθεραπεία</h3>
+                    <p>Θεραπεία για προβλήματα προφοράς, γλώσσας, ροής και κατανόησης. Ειδική μεθοδολογία για όλες τις ηλικίες.</p>
+                    <a href="#">Μάθε περισσότερα →</a>
+                </div>
+                <div class="service-card">
+                    <h3>🤲 Εργοθεραπεία</h3>
+                    <p>Ανάπτυξη δεξιοτήτων αυτοεξυπηρέτησης, λεπτής κινητικότητας και ενσωμάτωσης στην καθημερινή ζωή.</p>
+                    <a href="#">Μάθε περισσότερα →</a>
+                </div>
+                <div class="service-card">
+                    <h3>💭 Ψυχοθεραπεία</h3>
+                    <p>Συνεδρίες ψυχολογικής υποστήριξης για άγχος, φόβους, αυτοεκτίμηση και συναισθηματικές δυσκολίες.</p>
+                    <a href="#">Μάθε περισσότερα →</a>
+                </div>
+                <div class="service-card">
+                    <h3>📚 Ειδικό Μαθησιακό</h3>
+                    <p>Υποστήριξη στη μάθηση, αντιμετώπιση δυσλεξίας, δυsgraphia και άλλων μαθησιακών δυσκολιών.</p>
+                    <a href="#">Μάθε περισσότερα →</a>
+                </div>
+                <div class="service-card">
+                    <h3>🎭 Θεατρική Αγωγή</h3>
+                    <p>Δραματικές τεχνικές για ανάπτυξη αυτοπεποίθησης, κοινωνικών δεξιοτήτων και δημιουργικότητας.</p>
+                    <a href="#">Μάθε περισσότερα →</a>
+                </div>
+                <div class="service-card">
+                    <h3>🎨 Messy Play</h3>
+                    <p>Ελεύθερο παιχνίδι με υλικά για εξερεύνηση, ανακάλυψη και ανάπτυξη των αισθήσεων.</p>
+                    <a href="#">Μάθε περισσότερα →</a>
+                </div>
+                <div class="service-card">
+                    <h3>👨‍👩‍👧‍👦 Συμβουλευτική Γονέων</h3>
+                    <p>Προσωπική καθοδήγηση για γονείς σχετικά με τη συμπεριφορά, τη βοήθεια και την ενίσχυση του παιδιού.</p>
+                    <a href="#">Μάθε περισσότερα →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Η Φιλοσοφία του ΛογοΓραφήματα</h2>
+                    <p>Πιστεύουμε ότι κάθε παιδί έχει τις δικές του δυνάμεις και τα δικά του όρια. Η δουλειά μας δεν είναι να "διορθώσουμε" το παιδί, αλλά να το υποστηρίξουμε να γίνει η καλύτερη εκδοχή του εαυτού του.</p>
+                    <p>Συνδυάζουμε επιστημονικές μεθόδους με θέρμη, εμπάθεια και ακούσιμο χιούμορ. Θέλουμε τα παιδιά να νιώσουν ασφάλεια και αποδοχή στο κέντρό μας, ώστε να τολμήσουν να δοκιμάσουν και να αναπτυχθούν.</p>
+                    <p>Η οικογένεια είναι καρδιά της προσέγγισής μας. Δούμε τους γονείς ως συνεργάτες και τους ενδυναμώνουμε με γνώση και εργαλεία για να συνεχίσουν τη θεραπεία στο σπίτι.</p>
+                </div>
+                <div class="about-image">✨</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- When to Seek Help Section -->
+    <section class="signs">
+        <div class="signs-container">
+            <h2 class="section-title">Πότε να Απευθυνθείτε σε Ειδικό</h2>
+            <p class="section-subtitle">Σημάδια που ίσως χρειάζεται υποστήριξη</p>
+            <div class="signs-grid">
+                <div class="sign-card">
+                    <h3>🗣️ Δυσκολίες Ομιλίας</h3>
+                    <ul>
+                        <li>Δύσκολη κατανόηση στη γλώσσα του</li>
+                        <li>Απλή ή συνθετική γλώσσα για την ηλικία</li>
+                        <li>Προβλήματα προφοράς που παραμένουν</li>
+                        <li>Δύσκολη επικοινωνία με συνομήλικους</li>
+                    </ul>
+                </div>
+                <div class="sign-card">
+                    <h3>📚 Μαθησιακές Δυσκολίες</h3>
+                    <ul>
+                        <li>Δυσκολία στην ανάγνωση ή γραφή</li>
+                        <li>Αργή πρόοδος στα μαθήματα</li>
+                        <li>Προβλήματα συγκέντρωσης</li>
+                        <li>Αποτυχία στη δουλειά με αριθμούς</li>
+                    </ul>
+                </div>
+                <div class="sign-card">
+                    <h3>💭 Συναισθηματικές/Συμπεριφορικές</h3>
+                    <ul>
+                        <li>Υπερβολικό άγχος ή κοινωνικό φόβο</li>
+                        <li>Δύσκολη προσαρμογή σε αλλαγές</li>
+                        <li>Προβλήματα συμπεριφοράς</li>
+                        <li>Χαμηλή αυτοεκτίμηση</li>
+                    </ul>
+                </div>
+                <div class="sign-card">
+                    <h3>🧠 Αναπτυξιακές/Αισθητηριακές</h3>
+                    <ul>
+                        <li>Δυσκολίες στη δημιουργία φίλων</li>
+                        <li>Λήψη ή αποφυγή αισθητηριακών πληροφοριών</li>
+                        <li>Ατυχήματα ή απρόσεκτο παιχνίδι</li>
+                        <li>Δυσκολία στην αυτοεξυπηρέτηση</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="process-container">
+            <h2 class="section-title">Η Διαδικασία Μας</h2>
+            <p class="section-subtitle">Τέσσερα απλά βήματα προς τη στήριξη του παιδιού σας</p>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Πρώτη Επικοινωνία</h3>
+                    <p>Επικοινωνήστε με εμάς και περιγράψτε τις ανησυχίες σας. Θα ακούσουμε προσεκτικά και θα απαντήσουμε στις ερωτήσεις σας.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Αρχική Αξιολόγηση</h3>
+                    <p>Συναντώμαστε για μια λεπτομερή αξιολόγηση. Παίζουμε, παρατηρούμε και καταλαβαίνουμε τις δυνάμεις και τις ανάγκες του παιδιού.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Εξατομικευμένο Πλάνο</h3>
+                    <p>Μαζί με το παιδί και την οικογένεια, δημιουργούμε ένα πλάνο που ταιριάζει στις συγκεκριμένες ανάγκες και στόχους του.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Συνεχής Υποστήριξη</h3>
+                    <p>Λαμβάνονται τακτικές συνεδρίες θεραπείας, με τακτικές ενημερώσεις για την πρόοδο και συμβουλές για το σπίτι.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <h2 class="section-title">Τι Λένε οι Γονείς</h2>
+            <p class="section-subtitle">Ιστορίες από οικογένειες που έχουμε τιμή να στηρίξουμε</p>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Το παιδί μου είχε πολλές δυσκολίες με την ομιλία και το κοινωνικό άγχος. Μετά από λίγες συνεδρίες, δείχνει τόσο μεγάλη αυτοπεποίθηση! Η ομάδα είναι απίστευτη."</p>
+                    <div class="testimonial-author">— Μ.Σ., Γονέας</div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Δεν ήμαστε σίγουροι ποια θεραπεία χρειαζόταν η κόρη μας. Οι έμπειροι αξιολογητές τους μας βοήθησαν να κατανοήσουμε και να κατευθυνθούμε. Στηρίζουμε την οικογένειά μας με πράγματι εμψυχωτική προσέγγιση."</p>
+                    <div class="testimonial-author">— Ν.Π., Γονέας</div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Το περιβάλλον είναι τόσο ασφαλές και ζεστό. Κάθε φορά που κάνουμε θεραπεία, ο γιος μου περνάει καλά και μαθαίνει. Ευχαριστώ πολύ!"</p>
+                    <div class="testimonial-author">— Δ.Λ., Γονέας</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="faq-container">
+            <h2 class="section-title">Συχνές Ερωτήσεις</h2>
+            <p class="section-subtitle">Απαντήσεις στις πιο κοινές ερωτήσεις</p>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Ποια είναι η ηλικία συμμετοχής;</span>
+                    <span class="faq-toggle">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    Υποστηρίζουμε παιδιά από 18 μηνών έως 18 ετών. Ωστόσο, δυνατόν έχουμε εξαιρέσεις για ενήλικες, ανάλογα με τις συγκεκριμένες ανάγκες. Επικοινωνήστε για μας για περισσότερες πληροφορίες.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Πόσο συχνά θα έχει θεραπεία το παιδί μου;</span>
+                    <span class="faq-toggle">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    Το πρόγραμμα εξαρτάται από τις ανάγκες του παιδιού. Τυπικά, συνιστούμε 1-3 συνεδρίες την εβδομάδα, ανάλογα με την περίπτωση και τους στόχους. Θα συζητήσουμε το καλύτερο πλάνο για το παιδί σας.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Είναι καλυπτευμένες οι συνεδρίες από την ασφάλιση;</span>
+                    <span class="faq-toggle">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    Μερικές ασφαλιστικές εταιρείες καλύπτουν τις θεραπείες μας. Συνιστούμε να επικοινωνήσετε τακτικά με την ασφάλειά σας για να μάθετε. Είμαστε χαρούμενοι να βοηθήσουμε στην τεκμηρίωση για αποζημίωση.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Μπορώ να παρακολουθώ τις θεραπευτικές συνεδρίες;</span>
+                    <span class="faq-toggle">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    Συνήθως, οι γονείς μπορούν να παρακολουθούν ή να περιμένουν κοντά. Για ορισμένες θεραπείες, είναι καλύτερα να δίνεται στο παιδί ένα ασφαλές περιβάλλον χωρίς γονία. Θα συζητήσουμε την καλύτερη προσέγγιση για την περίπτωσή σας.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Τι περιμένουμε ως μέλη της ομάδας;</span>
+                    <span class="faq-toggle">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    Χαίρομαι που ρωτάτε! Αναμένουμε τακτική συμμετοχή στις συνεδρίες, ανοιχτή επικοινωνία με τη θεραπευτική ομάδα και εργασία στα "εργασία" που τίθενται στο σπίτι. Η θεραπεία λειτουργεί καλύτερα όταν είναι παιδί και γονέας εργάζονται μαζί.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h1 class="contact-title">Έτοιμος για την Επόμενη Ενέργεια;</h1>
+            <p class="contact-subtitle">Επικοινωνήστε με ημάς σήμερα για να κλείσετε την πρώτη σας αξιολόγηση</p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>📞 Τηλέφωνο</h3>
+                        <p>+30 210 XXX XXXX</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>✉️ Email</h3>
+                        <p>info@logografimata.gr</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>📍 Διεύθυνση</h3>
+                        <p>Ρέντης, Νίκαια, Πειραιάς<br>Αττική, Ελλάδα</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>🕐 Ώρες Λειτουργίας</h3>
+                        <p>Δευτέρα - Παρασκευή: 9:00 - 18:00<br>Σάββατο: 9:00 - 14:00</p>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Όνομα *</label>
+                        <input type="text" id="name" name="name" required placeholder="Το όνομά σας">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Τηλέφωνο</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+30 2XX XXX XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Μήνυμα *</label>
+                        <textarea id="message" name="message" required placeholder="Πείτε μας περισσότερα σχετικά με το παιδί σας..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Αποστολή Αιτήματος</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>ΛογοΓραφήματα</h4>
+                <p>Κέντρο Ειδικών Θεραπειών για παιδιά και οικογένειες. Ειδικευόμαστε στη λογοθεραπεία, εργοθεραπεία και ψυχοθεραπεία.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Υπηρεσίες</h4>
+                <a href="#services">Λογοθεραπεία</a>
+                <a href="#services">Εργοθεραπεία</a>
+                <a href="#services">Ψυχοθεραπεία</a>
+                <a href="#services">Ειδικό Μαθησιακό</a>
+                <a href="#services">Θεατρική Αγωγή</a>
+            </div>
+            <div class="footer-section">
+                <h4>Σύνδεσμοι</h4>
+                <a href="#about">Σχετικά</a>
+                <a href="#process">Διαδικασία</a>
+                <a href="#contact">Επικοινωνία</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ΛογοΓραφήματα. Όλα τα δικαιώματα διατηρούνται. Ρέντης, Νίκαια, Πειραιάς | Εξυπηρετούμε: Πειραιάς, Νίκαια, Ρέντης, Αθήνα</p>
+        </div>
+    </footer>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MedicalBusiness",
+        "name": "ΛογοΓραφήματα",
+        "image": "https://logografimata.gr/logo.png",
+        "description": "Κέντρο Ειδικών Θεραπειών για παιδιά - Λογοθεραπεία, Εργοθεραπεία, Ψυχοθεραπεία, Ειδικό Μαθησιακό",
+        "telephone": "+30 210 XXX XXXX",
+        "email": "info@logografimata.gr",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Ρέντης",
+            "addressLocality": "Ρέντης",
+            "addressRegion": "Αττική",
+            "postalCode": "18844",
+            "addressCountry": "GR"
+        },
+        "areaServed": ["Ρέντης", "Νίκαια", "Πειραιάς", "Αθήνα"],
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "18:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "09:00",
+                "closes": "14:00"
+            }
+        ],
+        "priceRange": "€€",
+        "sameAs": [],
+        "serviceType": ["Λογοθεραπεία", "Εργοθεραπεία", "Ψυχοθεραπεία", "Ειδικό Μαθησιακό", "Θεατρική Αγωγή"]
+    }
+    </script>
+
+    <script>
+        function toggleFAQ(button) {
+            const faqItem = button.closest('.faq-item');
+            const answer = faqItem.querySelector('.faq-answer');
+            
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.querySelector('.faq-question').classList.remove('active');
+                    item.querySelector('.faq-answer').classList.remove('active');
+                }
+            });
+            
+            button.classList.toggle('active');
+            answer.classList.toggle('active');
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                message: document.getElementById('message').value
+            };
+            
+            console.log('Form submitted:', formData);
+            alert('Ευχαριστώ! Θα επικοινωνήσουμε σύντομα στο email ή το τηλέφωνό σας.');
+            event.target.reset();
+        }
+
+        // Smooth scroll enhancement
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Add intersection observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.trust-card, .service-card, .sign-card, .process-step, .testimonial').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
