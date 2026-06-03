@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio One Ioannina - Κέντρο Εκπαίδευσης Fitness & Wellness</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #ffffff;
+            --accent: #d4af37;
+            --light-bg: #f8f7f5;
+            --text-dark: #2a2a2a;
+            --text-light: #666666;
+            --border-light: #e5e5e5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background: var(--secondary);
+            line-height: 1.6;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .logo {
+            height: 45px;
+            width: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 70px;
+        }
+
+        section {
+            scroll-margin-top: 70px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+        }
+
+        .hero-slider {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: var(--secondary);
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+
+        .cta-button:hover {
+            background: #e5c158;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 20;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--accent);
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background: var(--light-bg);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            margin-bottom: 2rem;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .feature {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-left: 3px solid var(--accent);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .feature-text p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 0;
+        }
+
+        /* Programs Section */
+        .programs {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .program-card {
+            background: var(--light-bg);
+            padding: 3rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .program-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .program-details {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .detail-tag {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+        .program-description {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Certifications */
+        .certifications {
+            padding: 6rem 0;
+            background: var(--light-bg);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .cert-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-top: 3px solid transparent;
+        }
+
+        .cert-card:hover {
+            border-top-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .cert-logo {
+            width: 100%;
+            max-width: 120px;
+            height: auto;
+            margin-bottom: 1rem;
+            object-fit: contain;
+        }
+
+        .cert-card p {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: var(--light-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .team-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .team-role {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-description {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button-secondary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .cta-button-secondary:hover {
+            background: #e5c158;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero {
+                height: 70vh;
+            }
+
+            .program-card {
+                padding: 1.5rem;
+            }
+
+            .about {
+                padding: 3rem 0;
+            }
+
+            .programs {
+                padding: 3rem 0;
+            }
+
+            .certifications {
+                padding: 3rem 0;
+            }
+
+            .team {
+                padding: 3rem 0;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://www.studiooneioannina.gr/studio/sites/default/files/studioone_logo.png" alt="Studio One Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">Σχετικά</a></li>
+                <li><a href="#programs">Προγράμματα</a></li>
+                <li><a href="#certifications">Πιστοποιήσεις</a></li>
+                <li><a href="#team">Εκπαιδευτές</a></li>
+                <li><a href="#contact">Επικοινωνία</a></li>
+            </ul>
+            <button class="mobile-toggle">☰</button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-slider">
+                <div class="hero-slide active">
+                    <img src="https://www.studiooneioannina.gr/studio/sites/default/files/md-slider-image/pt_header.webp" alt="Personal Training">
+                </div>
+                <div class="hero-slide">
+                    <img src="https://www.studiooneioannina.gr/studio/sites/default/files/md-slider-image/yg_header_0.webp" alt="Yoga Training">
+                </div>
+            </div>
+            <div class="hero-content">
+                <h1>Ξεκίνα τη Δική σου Πορεία</h1>
+                <p>Πρόγραμμα εκπαίδευσης υψηλής ποιότητας στο Fitness & Wellness με διεθνείς πιστοποιήσεις</p>
+                <a href="#contact" class="cta-button">Ενδιαφέρομαι</a>
+            </div>
+            <div class="hero-dots">
+                <span class="dot active" onclick="changeSlide(0)"></span>
+                <span class="dot" onclick="changeSlide(1)"></span>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 3rem;">Ποιοί Είμαστε</h2>
+                <div class="about-grid">
+                    <div class="about-content">
+                        <p>Ένας από τους πιο αναγνωρισμένους εκπαιδευτικούς χώρους Fitness & Wellness στην Ελλάδα, προσφέροντας σύγχρονα προγράμματα με διεθνή κύρος και επαγγελματική κατεύθυνση.</p>
+                        <p>Με συνεργασίες από EuropeActive, EREPS, Yoga Alliance και NPCP, παρέχουμε εκπαίδευση που συνδυάζει διεθνή standards, θεωρητική γνώση και πρακτική εφαρμογή.</p>
+                        <p>Δημιουργήσαμε ένα σύγχρονο περιβάλλον μάθησης στα Ιωάννινα για όσους επιθυμούν να εξελιχθούν επαγγελματικά με ολοκληρωμένα προγράμματα και διεθνώς αναγνωρισμένες πιστοποιήσεις.</p>
+                    </div>
+                    <div class="features-list">
+                        <div class="feature">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-text">
+                                <h4>Αναγνωρισμένη Εκπαίδευση</h4>
+                                <p>Κέντρο Δια Βίου Μάθησης με εξαιρετικές πιστοποιήσεις</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-text">
+                                <h4>Διεθνείς Συνεργασίες</h4>
+                                <p>Σχέσεις με κορυφαίους οργανισμούς εκπαίδευσης παγκοσμίως</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-text">
+                                <h4>Εξειδικευμένη Ομάδα</h4>
+                                <p>Μαθητές και δάσκαλοι με εντυπωσιακή παρουσία στο χώρο</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-text">
+                                <h4>Επαγγελματική Ανάπτυξη</h4>
+                                <p>Υψηλό ποσοστό επιτυχίας αποφοίτων σε ελληνικό & διεθνές χώρο</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs Section -->
+        <section class="programs" id="programs">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Τα Προγράμματά Μας</h2>
+                </div>
+                <div class="programs-grid">
+                    <div class="program-card fade-in">
+                        <h3>Πιστοποίηση Personal Training</h3>
+                        <div class="program-details">
+                            <span class="detail-tag">500 ώρες</span>
+                            <span class="detail-tag">EuropeActive Accredited</span>
+                            <span class="detail-tag">EREPS / EQF 4</span>
+                        </div>
+                        <p class="program-description">Ολοκληρωμένο πρόγραμμα ανάπτυξης δεξιοτήτων personal training με έμφαση στη σωματική δεξιότητα, διατροφή και συνδυασμό χορέας-πελάτη.</p>
+                    </div>
+                    <div class="program-card fade-in">
+                        <h3>Yoga Alliance Teacher Training</h3>
+                        <div class="program-details">
+                            <span class="detail-tag">200h & 300h</span>
+                            <span class="detail-tag">Yoga Alliance Certified</span>
+                        </div>
+                        <p class="program-description">Εξαιρετικό πρόγραμμα εκμάθησης Yoga με διδασκαλία ασάνα, προανάπτυξης ψυχής και αρχέγονων τεχνικών παραδοσιακής φιλοσοφίας.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section class="certifications" id="certifications">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Διεθνείς Πιστοποιήσεις</h2>
+                </div>
+                <div class="cert-grid">
+                    <div class="cert-card fade-in">
+                        <img src="https://www.studiooneioannina.gr/studio/sites/default/files/styles/certifications/public/2026-05/EREPS.png.webp" alt="EREPS" class="cert-logo">
+                        <p>EREPS – European Register</p>
+                    </div>
+                    <div class="cert-card fade-in">
+                        <img src="https://www.studiooneioannina.gr/studio/sites/default/files/styles/certifications/public/2026-05/EUROPEACTIVE.png.webp" alt="EuropeActive" class="cert-logo">
+                        <p>EuropeActive</p>
+                    </div>
+                    <div class="cert-card fade-in">
+                        <img src="https://www.studiooneioannina.gr/studio/sites/default/files/styles/certifications/public/2026-05/RYS200.png.webp" alt="RYS 200" class="cert-logo">
+                        <p>RYS 200 Yoga School</p>
+                    </div>
+                    <div class="cert-card fade-in">
+                        <img src="https://www.studiooneioannina.gr/studio/sites/default/files/styles/certifications/public/2026-05/RYS300.png.webp" alt="RYS 300" class="cert-logo">
+                        <p>RYS 300 Yoga School</p>
+                    </div>
+                    <div class="cert-card fade-in">
+                        <img src="https://www.studiooneioannina.gr/studio/sites/default/files/styles/certifications/public/2026-05/RCYT.png.webp" alt="RCYT" class="cert-logo">
+                        <p>Children's Yoga Teacher</p>
+                    </div>
+                    <div class="cert-card fade-in">
+                        <img src="https://www.studiooneioannina.gr/studio/sites/default/files/styles/certifications/public/2026-05/RPYT.png.webp" alt="RPYT" class="cert-logo">
+                        <p>Prenatal Yoga Teacher</p>
+                    </div>
+                    <div class="cert-card fade-in">
+                        <img src="https://www.studiooneioannina.gr/studio/sites/default/files/styles/certifications/public/2026-05/ALAN-01-600x425.png.webp" alt="Alan Herdman" class="cert-logo">
+                        <p>Alan Herdman Pilates</p>
+                    </div>
+                    <div class="cert-card fade-in">
+                        <img src="https://www.studiooneioannina.gr/studio/sites/default/files/styles/certifications/public/2026-05/thegreylogo.png.webp" alt="NPCP" class="cert-logo">
+                        <p>National Pilates Program</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team" id="team">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Η Ομάδα Μας</h2>
+                </div>
+                <div class="team-grid">
+                    <div class="team-member fade-in">
+                        <img src="https://www.studiooneioannina.gr/studio/sites/default/files/styles/team/public/2026-05/ioanna.jpg.webp" alt="Ιωάννα Δρανδάκη" class="team-image">
+                        <div class="team-info">
+                            <h4>Ιωάννα Δρανδάκη</h4>
+                            <p class="team-role">Yoga Diploma Head & CEO</p>
+                            <p class="team-description">Ηγέτης στα προγράμματα yoga και διεύθυνση του Studio One</p>
+                        </div>
+                    </div>
+                    <div class="team-member fade-in">
+                        <img src="https://www.studiooneioannina.gr/studio/sites/default/files/styles/team/public/2026-05/DSC8895_0.jpg.webp" alt="Σταμάτης Μουρτάκος" class="team-image">
+                        <div class="team-info">
+                            <h4>Σταμάτης Μουρτάκος</h4>
+                            <p class="team-role">Scientific Director</p>
+                            <p class="team-description">Επιστημονική κατεύθυνση και υψηλά πρότυπα εκπαίδευσης</p>
+                        </div>
+                    </div>
+                    <div class="team-member fade-in">
+                        <img src="https://www.studiooneioannina.gr/studio/sites/default/files/styles/team/public/2026-05/Image.jpeg.webp" alt="Γιάννης Καραφυλλίδης" class="team-image">
+                        <div class="team-info">
+                            <h4>Γιάννης Καραφυλλίδης</h4>
+                            <p class="team-role">Strength & Rehabilitation Coach</p>
+                            <p class="team-description">Ειδικός στη δύναμη και αποκατάσταση με Bowen Therapy</p>
+                        </div>
+                    </div>
+                    <div class="team-member fade-in">
+                        <img src="https://www.studiooneioannina.gr/studio/sites/default/files/styles/team/public/2026-05/gioupis.jpg.webp" alt="Γεώργιος Γιούπης" class="team-image">
+                        <div class="team-info">
+                            <h4>Γεώργιος Γιούπης</h4>
+                            <p class="team-role">Fitness & Performance Coach</p>
+                            <p class="team-description">Εξειδικευμένος στη φυσική απόδοση και προγράμματα fitness</p>
+                        </div>
+                    </div>
+                    <div class="team-member fade-in">
+                        <img src="https://www.studiooneioannina.gr/studio/sites/default/files/styles/team/public/2026-05/IMG_3153.jpg.webp" alt="Κωνσταντίνος Φονιάς" class="team-image">
+                        <div class="team-info">
+                            <h4>Κωνσταντίνος Φονιάς</h4>
+                            <p class="team-role">Yoga & Personal Training Instructor</p>
+                            <p class="team-description">Ολοκληρωμένη διδασκαλία yoga και προσωπικό coaching</p>
+                        </div>
+                    </div>
+                    <div class="team-member fade-in">
+                        <img src="https://www.studiooneioannina.gr/studio/sites/default/files/styles/team/public/2026-05/IMG_3557.jpg.webp" alt="Ευρυδίκη Καραγιάννη" class="team-image">
+                        <div class="team-info">
+                            <h4>Ευρυδίκη Καραγιάννη</h4>
+                            <p class="team-role">Pilates Instructor</p>
+                            <p class="team-description">Πιστοποιημένη εκπαίδευση σε Mat & Equipment Pilates</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section" id="contact">
+            <div class="container">
+                <h2>Έτοιμος για την Αλλαγή;</h2>
+                <p>Ξεκίνα τη δική σου δικαιοσύνη στον κόσμο του Fitness & Wellness σήμερα</p>
+                <a href="https://www.studiooneioannina.gr/aitisi-eggrafis" class="cta-button-secondary" target="_blank">Υπολογισμός Εγγραφής</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Studio One</h4>
+                    <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 1.5rem;">Κέντρο εκπαίδευσης υψηλής ποιότητας στο Fitness & Wellness με διεθνείς πιστοποιήσεις.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/studiooneioannina" target="_blank" title="Facebook">f</a>
+                        <a href="https://www.instagram.com/studiooneioannina" target="_blank" title="Instagram">📷</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Προγράμματα</h4>
+                    <div class="footer-links">
+                        <a href="#programs">Personal Training</a>
+                        <a href="#programs">Yoga Alliance</a>
+                        <a href="#programs">Pilates</a>
+                        <a href="#certifications">Πιστοποιήσεις</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Νόμιμα</h4>
+                    <div class="footer-links">
+                        <a href="https://www.studiooneioannina.gr/studio/oroi-hrisis" target="_blank">Όροι Χρήσης</a>
+                        <a href="https://www.studiooneioannina.gr/studio/politiki-aporritoy" target="_blank">Πολιτική Απορρήτου</a>
+                        <a href="#contact">Επικοινωνία</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Studio One Ioannina. Όλα τα δικαιώματα διατηρούνται. Σχεδιασμένο με precision.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hero Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function changeSlide(n) {
+            currentSlide = n;
+            updateSlider();
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlider();
+        }
+
+        function updateSlider() {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        // Auto-advance slides every 5 seconds
+        setInterval(nextSlide, 5000);
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileToggle.addEventListener('click', () => {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '70px';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.background = 'rgba(26, 26, 26, 0.98)';
+                navLinks.style.gap = '1rem';
+                navLinks.style.padding = '2rem';
+            }
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
